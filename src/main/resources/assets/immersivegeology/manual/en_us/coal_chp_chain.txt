@@ -1,0 +1,13 @@
+The Coal CHP Chain
+From Seam to Socket and Radiator
+This entry walks the whole chain, in the order a real coal fired combined heat and power plant runs it.
+<np>
+§l1. Fuel preparation.§r Mine §lcoal§r (lignite, bituminous or anthracite), crush it, then grind it to §lpulverised coal§r in a §lBall Mill§r. Dust burns in suspension; lump coal does not.
+§l2. Combustion.§r The §lCoal Boiler§r burns the dust with feed water and makes §lsuperheated steam§r, §lflue gas§r and §lbottom ash§r. It needs power for its fans and pumps - a boiler without draft is a cold boiler.
+§l3. Gas cleaning.§r The §lElectrostatic Precipitator§r pulls the flue gas through corona fields, recovers §lfly ash§r for the concrete industry and vents clean gas up its stack.
+<np>
+§l4. Generation.§r Steam drives the §lSteam Turbine§r, whose shaft spins the §lAlternator§r - that is your electricity.
+§l5. The cold end.§r Exhaust steam condenses in the §lSteam Condenser§r; the §lCooling Tower§r cools the circulating water that carries the latent heat away; condensate returns to the boiler as feed water.
+§l6. Cogeneration.§r Steam bled from the cycle heats network water in the §lDistrict Heater§r - hot water for the town, and the reason a CHP plant burns less coal per useful unit than a plain power station.
+<np>
+§lTip:§r return the District Heater's hot water to the boiler as §lpreheated feed water§r and the boiler rewards you with extra efficiency - regenerative feed water heating, the cheapest efficiency win a real station has.

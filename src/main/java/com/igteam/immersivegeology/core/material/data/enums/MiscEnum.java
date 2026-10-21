@@ -29,7 +29,11 @@ public enum MiscEnum implements MaterialInterface<MaterialMisc> {
     IndustrialRefractoryBlock(new MaterialIndustrialRefractoryBlock()),
     MoltenSlag(new MaterialMoltenSlag()),
     MoltenPigIron(new MaterialMoltenPigIron()),
-    Graphite(new MaterialGraphite());
+    Graphite(new MaterialGraphite()),
+    //===== Coal CHP (ТЭЦ) chain =====\\
+    FlyAsh(new MaterialFlyAsh()),
+    FlueGas(new MaterialFlueGas()),
+    HotWater(new MaterialHotWater());
 
     private final MaterialMisc material;
     MiscEnum(MaterialMisc m){

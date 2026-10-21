@@ -1,0 +1,15 @@
+Pulverised Coal Boiler
+The Heart of the Station
+<&multiblock>The Coal Boiler is a §ldrum boiler§r fired with §lpulverised coal§r, exactly like the boiler house of a real thermal power plant. Grind your coal in a Ball Mill first: coal dust burns in suspension, hot and complete, while lump coal smoulders and loses several percent of its heating value into the ash pit.
+<np>
+§lLighting up§r
+- Feed §lpulverised coal§r into the bunker on the §lcentre of the roof§r.
+- Feed §lwater§r (or preheated network water, see the District Heater) into the §ldrum port on the trigger side§r, middle height.
+- Power the §lfan and pump motors§r on the trigger side corner. Without power there is no draft and the fire suffocates.
+- The furnace has §lthermal inertia§r: heat climbs while coal burns and falls slowly when it does not. Steam only appears once the fire is properly up.
+<np>
+§lOutputs§r
+- §lSuperheated steam§r leaves through the §lfar side§r of the superheater band - pipe it to a Steam Turbine.
+- §lFlue gas§r leaves through the §lfar side§r of the roof duct - pipe it to an Electrostatic Precipitator. If the gas has nowhere to go the boiler chokes on its own exhaust.
+- §lBottom ash§r (slag) drops out of the hopper at the §lback of the foundation§r.
+- If the drum cannot give its steam away the §lpressure§r rises and the §lsafety valve§r lifts, wasting steam. The control panel on the roof takes a redstone signal.

@@ -1,0 +1,12 @@
+{
+  "type": "immersivegeology:boiler_fuel",
+  "burnTime": 120,
+  "bottom_ash_chance": 0.34,
+  "efficiency": 0.78,
+  "flue_gas": 360,
+  "input": {
+    "item": "immersivegeology:normal_ore_lignite"
+  },
+  "steam": 240,
+  "water": 120
+}

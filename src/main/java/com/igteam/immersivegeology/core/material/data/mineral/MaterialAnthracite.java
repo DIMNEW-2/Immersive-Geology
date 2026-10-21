@@ -10,6 +10,10 @@ import com.igteam.immersivegeology.core.material.helper.flags.ItemCategoryFlags;
 import com.igteam.immersivegeology.core.material.helper.flags.ModFlags;
 import com.igteam.immersivegeology.core.material.helper.material.MaterialHelper;
 import com.igteam.immersivegeology.core.material.helper.material.StoneFormation;
+import com.igteam.immersivegeology.core.material.helper.material.recipe.IGStageDesignation;
+import com.igteam.immersivegeology.core.material.helper.material.recipe.helper.IGMethodBuilder;
+import com.igteam.immersivegeology.core.material.helper.material.recipe.helper.IGRecipeChain;
+import com.igteam.immersivegeology.core.material.helper.material.recipe.helper.IGRecipeNode;
 import net.minecraft.tags.BiomeTags;
 
 import java.util.List;
@@ -25,7 +29,7 @@ public class MaterialAnthracite extends MaterialMineral
 		this.acceptableStoneTypes.add(StoneFormation.MINECRAFT_STONE);
 		removeMaterialFlags(ItemCategoryFlags.values());
 		removeMaterialFlags(BlockCategoryFlags.values());
-		addFlags(ItemCategoryFlags.NORMAL_ORE);
+		addFlags(ItemCategoryFlags.NORMAL_ORE, ItemCategoryFlags.GRIT, ItemCategoryFlags.POWDER);
 		addFlags(BlockCategoryFlags.ORE_BLOCK, BlockCategoryFlags.STORAGE_BLOCK);
 
 		addExistingFlag(ModFlags.TFC, BlockCategoryFlags.ORE_BLOCK);
@@ -35,10 +39,31 @@ public class MaterialAnthracite extends MaterialMineral
 		addGenerationFriend(MaterialAnthracite::getFriends, 300);
 	}
 
+	/** Manual chain: ore -> crushed coal -> pulverised coal, shown in the engineer's manual. */
+	protected final IGRecipeChain coal_preparation = new IGRecipeChain(this, "coal_preparation", 0);
+
 	private static MaterialHelper getFriends(int height){
 		MaterialHelper selected = null;
 		if(height > 0) selected = MineralEnum.Bituminous.instance();
 		return selected;
+	}
+
+
+	@Override
+	public void setupRecipeStages()
+	{
+		super.setupRecipeStages();
+		// Coal preparation plant: the crusher reduces the run-of-mine coal to a crushable grit, the
+		// ball mill (a stand in for a drum or шаровая мельница) then grinds it to pulverised coal.
+		IGRecipeNode crushed = IGMethodBuilder.crushing(this, IGStageDesignation.EXTRACTION)
+				.create(ItemCategoryFlags.NORMAL_ORE, ItemCategoryFlags.GRIT, 2400, 200)
+				.addToTree(coal_preparation);
+		IGMethodBuilder.pulverization(this, IGStageDesignation.PREPARATION)
+				.create(ItemCategoryFlags.GRIT, ItemCategoryFlags.POWDER, 4000, 32000)
+				.addToTree(coal_preparation, crushed.getNode());
+		IGMethodBuilder.pulverization(this, IGStageDesignation.PREPARATION)
+				.create(ItemCategoryFlags.NORMAL_ORE, ItemCategoryFlags.POWDER, 6000, 48000)
+				.addToTree(coal_preparation);
 	}
 
 	@Override

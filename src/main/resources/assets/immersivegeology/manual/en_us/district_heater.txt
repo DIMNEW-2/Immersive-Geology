@@ -1,0 +1,11 @@
+District Heater
+What Makes It a CHP Plant
+<&multiblock>The District Heater is a §lnetwork water heater§r - the cogeneration stage. Steam §lbled from the turbine§r condenses on the tube bundle and gives its latent heat to the §ldistrict heating network water§r, which leaves as hot supply water while the condensate returns to the feed water system.
+<np>
+Selling heat this way is what lifts a real cogeneration plant's fuel utilisation from about forty to seventy percent and more: the same coal that makes electricity also heats the town.
+<np>
+§lPorts§r
+- §lExtraction steam§r enters at the §ltop of the far side§r.
+- §lNetwork return water§r enters one §lflank§r; §lhot supply water§r leaves the other.
+- §lCondensate§r is pumped out of the §ltrigger side§r bottom - it is clean, warm feed water.
+- The §lnetwork circulation pumps§r need power on a flank; the control panel takes redstone.

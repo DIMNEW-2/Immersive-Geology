@@ -92,6 +92,7 @@ public class IGRecipes extends RecipeProvider
 	{
 		IGLib.IG_LOGGER.info("Started Registration of Immersive Geology Recipes");
 		multiblockRecipes(consumer);
+		coalChpRecipes(consumer);
 		bulkBlastFurnaceRecipes(consumer);
 		foundryRecipes(consumer);
 		foundryAlloyRecipes(consumer);
@@ -276,6 +277,78 @@ public class IGRecipes extends RecipeProvider
 		ResourceLocation id = ForgeRegistries.ITEMS.getKey(result.getItem());
 		if(id==null) return false;
 		return !IGLib.MODID.equals(id.getNamespace())||!metal.instance().weakCheckExistingImplementation(flag);
+	}
+
+
+	/**
+	 * The coal CHP (ТЭЦ) chain: boiler fuel schedules for every coal grade the mod generates, in both
+	 * pulverised and lump form, plus the pozzolanic use of the fly ash the precipitator recovers.
+	 * <p>
+	 * Steam yields follow the real lower heating values - lignite ~13 MJ/kg, bituminous ~24 MJ/kg,
+	 * anthracite ~28 MJ/kg - and pulverised coal always beats lump coal of the same grade because
+	 * suspended burning is more complete. Flue gas is ~1.5x the steam volume, matching the real mass
+	 * ratio of gas to steam.
+	 */
+	private void coalChpRecipes(Consumer<FinishedRecipe> consumer)
+	{
+		IGLib.IG_LOGGER.info("- Coal CHP Recipe Registration");
+		Item fly_ash = MiscEnum.FlyAsh.getItem(ItemCategoryFlags.POWDER);
+
+		BoilerFuelBuilder.builder(Ingredient.of(MineralEnum.Lignite.getItemTag(ItemCategoryFlags.POWDER)), 80, 300, 450, 0.30f, 0.86f)
+				.build(consumer, new ResourceLocation(IGLib.MODID, "boiler_fuel/pulverised_lignite"));
+		BoilerFuelBuilder.builder(Ingredient.of(MineralEnum.Bituminous.getItemTag(ItemCategoryFlags.POWDER)), 100, 480, 720, 0.22f, 0.92f)
+				.build(consumer, new ResourceLocation(IGLib.MODID, "boiler_fuel/pulverised_bituminous"));
+		BoilerFuelBuilder.builder(Ingredient.of(MineralEnum.Anthracite.getItemTag(ItemCategoryFlags.POWDER)), 140, 560, 840, 0.16f, 0.94f)
+				.build(consumer, new ResourceLocation(IGLib.MODID, "boiler_fuel/pulverised_anthracite"));
+
+		BoilerFuelBuilder.builder(Ingredient.of(MineralEnum.Lignite.getItemTag(ItemCategoryFlags.NORMAL_ORE)), 120, 240, 360, 0.34f, 0.78f)
+				.build(consumer, new ResourceLocation(IGLib.MODID, "boiler_fuel/lump_lignite"));
+		BoilerFuelBuilder.builder(Ingredient.of(MineralEnum.Bituminous.getItemTag(ItemCategoryFlags.NORMAL_ORE)), 150, 380, 570, 0.26f, 0.82f)
+				.build(consumer, new ResourceLocation(IGLib.MODID, "boiler_fuel/lump_bituminous"));
+		BoilerFuelBuilder.builder(Ingredient.of(MineralEnum.Anthracite.getItemTag(ItemCategoryFlags.NORMAL_ORE)), 200, 440, 660, 0.20f, 0.84f)
+				.build(consumer, new ResourceLocation(IGLib.MODID, "boiler_fuel/lump_anthracite"));
+
+		BoilerFuelBuilder.builder(Ingredient.of(Items.COAL), 140, 400, 600, 0.24f, 0.82f)
+				.build(consumer, new ResourceLocation(IGLib.MODID, "boiler_fuel/coal"));
+		BoilerFuelBuilder.builder(Ingredient.of(Items.CHARCOAL), 80, 260, 390, 0.12f, 0.80f)
+				.build(consumer, new ResourceLocation(IGLib.MODID, "boiler_fuel/charcoal"));
+		BoilerFuelBuilder.builder(Ingredient.of(Ingredients.COAL_COKE), 160, 520, 780, 0.10f, 0.93f)
+				.build(consumer, new ResourceLocation(IGLib.MODID, "boiler_fuel/coal_coke"));
+		BoilerFuelBuilder.builder(Ingredient.of(Ingredients.DUST_COKE), 90, 460, 690, 0.08f, 0.95f)
+				.build(consumer, new ResourceLocation(IGLib.MODID, "boiler_fuel/pulverised_coke"));
+
+		// Explicit coal preparation so the chain works even where the material recipe chains have not
+		// been regenerated: crush run-of-mine coal to grit, then grind the grit to pulverised coal.
+		for(MineralEnum coal : List.of(MineralEnum.Lignite, MineralEnum.Bituminous, MineralEnum.Anthracite))
+		{
+			String coalName = coal.getName().toLowerCase(Locale.ROOT);
+			CrusherRecipeBuilder.builder(coal.getStack(ItemCategoryFlags.GRIT, 1))
+					.addInput(coal.getItem(ItemCategoryFlags.NORMAL_ORE))
+					.setTime(200).setEnergy(2400)
+					.build(consumer, new ResourceLocation(IGLib.MODID, "crushing/crush_coal_" + coalName + "_to_grit"));
+			BallmillRecipeBuilder.builder(coal.getStack(ItemCategoryFlags.POWDER, 1))
+					.addInput(coal.getItemTag(ItemCategoryFlags.GRIT))
+					.setTime(3000).setEnergy(24000)
+					.build(consumer, new ResourceLocation(IGLib.MODID, "ballmill/pulverise_" + coalName));
+			BallmillRecipeBuilder.builder(coal.getStack(ItemCategoryFlags.POWDER, 1))
+					.addInput(coal.getItem(ItemCategoryFlags.NORMAL_ORE))
+					.setTime(5000).setEnergy(36000)
+					.build(consumer, new ResourceLocation(IGLib.MODID, "ballmill/pulverise_" + coalName + "_from_ore"));
+		}
+
+		// Fly ash is a pozzolan: ground fine and mixed into the binder it partially replaces the
+		// cement in reinforced concrete, exactly how real plants sell their ash to the cement industry.
+		Block srconcrete = MiscEnum.ReinforceConcrete.getBlock(BlockCategoryFlags.STORAGE_BLOCK);
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, srconcrete, 9)
+				.pattern("PFP")
+				.pattern("FCF")
+				.pattern("PFP")
+				.define('P', Ingredient.of(MetalEnum.Steel.getItemTag(ItemCategoryFlags.PLATE)))
+				.define('F', Ingredient.of(fly_ash))
+				.define('C', Ingredient.of(IEFluids.CONCRETE.getBucket()))
+				.group("ig_engineering")
+				.unlockedBy("has_fly_ash", InventoryChangeTrigger.TriggerInstance.hasItems(fly_ash))
+				.save(consumer, ig("craft_reinforced_concrete_with_fly_ash"));
 	}
 
 	private void bulkBlastFurnaceRecipes(Consumer<FinishedRecipe> consumer)

@@ -1,0 +1,12 @@
+{
+  "type": "immersivegeology:boiler_fuel",
+  "burnTime": 90,
+  "bottom_ash_chance": 0.08,
+  "efficiency": 0.95,
+  "flue_gas": 690,
+  "input": {
+    "item": "immersiveengineering:dust_coke"
+  },
+  "steam": 460,
+  "water": 230
+}

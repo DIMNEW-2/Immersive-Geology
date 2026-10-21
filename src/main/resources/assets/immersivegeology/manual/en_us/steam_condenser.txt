@@ -1,0 +1,9 @@
+Steam Condenser
+The Cold End of the Cycle
+<&multiblock>The Surface Condenser is where the steam cycle closes. Exhaust steam from the turbine gives up its §llatent heat§r to the tube bundle and drops into the hotwell as §lcondensate§r - that condensate is the boiler's feed water, so recovering it is what keeps the water-steam circuit closed.
+<np>
+§lPorts§r
+- §lExhaust steam or turbine condensate§r enters at the §ltop of the far side§r.
+- §lCirculating (cooling) water§r enters one §lflank§r and leaves the other as §lheated water§r on its way to the Cooling Tower. Condensing one bucket of steam needs several buckets of cooling water, as the real heat balance demands.
+- §lCondensate§r (feed water) is pumped out of the §ltrigger side§r bottom - return it to the boiler.
+- The condensate and circulating pumps need §lpower§r on the trigger side; without them the condenser floods and the vacuum is lost.

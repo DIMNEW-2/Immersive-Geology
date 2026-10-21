@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "ig_engineering",
+  "key": {
+    "C": {
+      "item": "immersiveengineering:concrete_bucket"
+    },
+    "F": {
+      "item": "immersivegeology:powder_fly_ash"
+    },
+    "P": {
+      "tag": "forge:plates/steel"
+    }
+  },
+  "pattern": [
+    "PFP",
+    "FCF",
+    "PFP"
+  ],
+  "result": {
+    "count": 9,
+    "item": "immersivegeology:storage_block_srconcrete"
+  },
+  "show_notification": true
+}

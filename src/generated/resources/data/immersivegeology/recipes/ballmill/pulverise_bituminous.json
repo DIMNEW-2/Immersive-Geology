@@ -1,0 +1,11 @@
+{
+  "type": "immersivegeology:ballmill",
+  "energy": 24000,
+  "input": {
+    "tag": "forge:grits/bituminous"
+  },
+  "result": {
+    "item": "immersivegeology:powder_bituminous"
+  },
+  "time": 3000
+}

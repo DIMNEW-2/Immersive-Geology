@@ -1,0 +1,11 @@
+Electrostatic Precipitator
+Cleaning the Flue Gas
+<&multiblock>The Electrostatic Precipitator pulls the boiler's §lflue gas§r through three §lcorona electrode fields§r. The discharge charges the suspended fly ash, the charged dust drifts onto the collection plates, and the rapping gear shakes it down into the hoppers - a real plant recovers 99% of its ash this way.
+<np>
+§lOperation§r
+- Dirty gas enters the §linlet duct on the far side§r, low down.
+- The §lrectifier sets§r need power on the §ltrigger side§r. Unpowered fields capture nothing and the gas backs up, choking the boiler's draft - exactly like a real plant with its induced draft fan stopped.
+- §lFly ash§r is discharged from the hoppers at the §lback of the foundation§r; pipe it away or let it drop into a chest.
+- Cleaned gas leaves through the §lstack§r on the roof.
+<np>
+§lTip:§r Fly ash is a §lpozzolan§r - mixed into reinforced concrete it partially replaces the cement, which is precisely how real stations sell their ash.

@@ -1,0 +1,12 @@
+{
+  "type": "immersivegeology:boiler_fuel",
+  "burnTime": 80,
+  "bottom_ash_chance": 0.3,
+  "efficiency": 0.86,
+  "flue_gas": 450,
+  "input": {
+    "tag": "forge:powders/lignite"
+  },
+  "steam": 300,
+  "water": 150
+}

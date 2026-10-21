@@ -1,0 +1,11 @@
+{
+  "type": "immersivegeology:ballmill",
+  "energy": 24000,
+  "input": {
+    "tag": "forge:grits/lignite"
+  },
+  "result": {
+    "item": "immersivegeology:powder_lignite"
+  },
+  "time": 3000
+}
