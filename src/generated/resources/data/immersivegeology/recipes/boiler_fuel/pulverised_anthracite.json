@@ -1,0 +1,12 @@
+{
+  "type": "immersivegeology:boiler_fuel",
+  "burnTime": 140,
+  "bottom_ash_chance": 0.16,
+  "efficiency": 0.94,
+  "flue_gas": 840,
+  "input": {
+    "tag": "forge:powders/anthracite"
+  },
+  "steam": 560,
+  "water": 280
+}

@@ -148,6 +148,8 @@
     "immersivegeology:fluid_chemical_waste_block",
     "immersivegeology:slurry_phosphoric_acid_uraninite_block",
     "immersivegeology:cloudy_slurry_phosphoric_acid_uraninite_block",
-    "immersivegeology:fluid_phosphoric_acid_block"
+    "immersivegeology:fluid_phosphoric_acid_block",
+    "immersivegeology:fluid_flue_gas_block",
+    "immersivegeology:fluid_hot_water_block"
   ]
 }

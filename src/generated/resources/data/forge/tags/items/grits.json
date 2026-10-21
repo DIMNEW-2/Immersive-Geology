@@ -63,6 +63,9 @@
     "immersivegeology:grit_vanadinite",
     "immersivegeology:grit_wolframite",
     "immersivegeology:grit_zircon",
-    "immersivegeology:grit_silicon"
+    "immersivegeology:grit_silicon",
+    "immersivegeology:grit_fly_ash",
+    "immersivegeology:grit_bituminous",
+    "immersivegeology:grit_anthracite"
   ]
 }

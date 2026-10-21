@@ -31,6 +31,9 @@
     "immersivegeology:powder_uraninite",
     "immersivegeology:powder_vanadinite",
     "immersivegeology:powder_wolframite",
-    "immersivegeology:powder_zircon"
+    "immersivegeology:powder_zircon",
+    "immersivegeology:powder_fly_ash",
+    "immersivegeology:powder_bituminous",
+    "immersivegeology:powder_anthracite"
   ]
 }

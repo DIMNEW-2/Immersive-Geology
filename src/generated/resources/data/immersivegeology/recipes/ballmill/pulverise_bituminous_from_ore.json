@@ -1,0 +1,11 @@
+{
+  "type": "immersivegeology:ballmill",
+  "energy": 36000,
+  "input": {
+    "item": "immersivegeology:normal_ore_bituminous"
+  },
+  "result": {
+    "item": "immersivegeology:powder_bituminous"
+  },
+  "time": 5000
+}

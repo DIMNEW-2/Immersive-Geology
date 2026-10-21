@@ -190,6 +190,13 @@ public class IGContent {
         multiblockEntry(instance, multiblock_category, "pelletizer");
         multiblockEntry(instance, multiblock_category, "steam_turbine");
         multiblockEntry(instance, multiblock_category, "alternator");
+        // Coal CHP (ТЭЦ) chain
+        multiblockEntry(instance, multiblock_category, "coal_boiler");
+        multiblockEntry(instance, multiblock_category, "electrostatic_precipitator");
+        multiblockEntry(instance, multiblock_category, "steam_condenser");
+        multiblockEntry(instance, multiblock_category, "cooling_tower");
+        multiblockEntry(instance, multiblock_category, "district_heater");
+        multiblockEntry(instance, multiblock_category, "coal_chp_chain");
         multiblockEntry(instance, multiblock_category, "small_chemical_reactor");
 
         // Build the manual entry for the contributors

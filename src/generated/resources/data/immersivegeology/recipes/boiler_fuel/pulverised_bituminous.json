@@ -1,0 +1,12 @@
+{
+  "type": "immersivegeology:boiler_fuel",
+  "burnTime": 100,
+  "bottom_ash_chance": 0.22,
+  "efficiency": 0.92,
+  "flue_gas": 720,
+  "input": {
+    "tag": "forge:powders/bituminous"
+  },
+  "steam": 480,
+  "water": 240
+}

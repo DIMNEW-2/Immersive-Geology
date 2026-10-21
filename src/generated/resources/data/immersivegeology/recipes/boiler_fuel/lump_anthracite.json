@@ -1,0 +1,12 @@
+{
+  "type": "immersivegeology:boiler_fuel",
+  "burnTime": 200,
+  "bottom_ash_chance": 0.2,
+  "efficiency": 0.84,
+  "flue_gas": 660,
+  "input": {
+    "item": "immersivegeology:normal_ore_anthracite"
+  },
+  "steam": 440,
+  "water": 220
+}

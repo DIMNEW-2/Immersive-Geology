@@ -1,0 +1,10 @@
+Cooling Tower
+The Station's Breath
+<&multiblock>The Cooling Tower is a §lnatural draft hyperbolic tower§r: heated water from the condenser is sprayed over the §lfill packing§r near the top, air drawn in through the §llouvers§r at the base rises up the shell and evaporates a small fraction of the flow - and that evaporation is what carries the heat away. The cooled water collects in the §lbasin§r and returns to the condenser.
+<np>
+§lPorts§r
+- §lHeated water§r from the condenser enters the §ltrigger side§r at mid height.
+- §lCooled water§r is drawn from the §lbasin§r on the trigger side, at ground level.
+- §lMake-up water§r enters the basin from a §lflank§r: about two percent of the flow leaves the tower as evaporation and drift, and a real basin must be topped up or the tower runs dry.
+<np>
+§lWeather matters:§r the tower needs no power at all - its performance is set by the atmosphere. Cold dry air and altitude improve evaporation, rain and humid heat choke it. Watch the plume: it is the station breathing.

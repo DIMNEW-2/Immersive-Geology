@@ -527,6 +527,12 @@ public class IGRegistrationHolder {
         registerMB("alternator", IGAlternatorMultiblock.INSTANCE, IGMultiblockProvider.ALTERNATOR, IGAlternatorSkins.class);
         registerMB("coredrill", IGCoreDrillMultiblock.INSTANCE, IGMultiblockProvider.COREDRILL, IGCoreDrillSkins.class);
 
+        // Coal CHP (ТЭЦ) chain
+        registerMB("coal_boiler", IGCoalBoilerMultiblock.INSTANCE, IGMultiblockProvider.COAL_BOILER);
+        registerMB("electrostatic_precipitator", IGElectrostaticPrecipitatorMultiblock.INSTANCE, IGMultiblockProvider.ELECTROSTATIC_PRECIPITATOR);
+        registerMB("steam_condenser", IGSteamCondenserMultiblock.INSTANCE, IGMultiblockProvider.STEAM_CONDENSER);
+        registerMB("cooling_tower", IGCoolingTowerMultiblock.INSTANCE, IGMultiblockProvider.COOLING_TOWER);
+        registerMB("district_heater", IGDistrictHeaterMultiblock.INSTANCE, IGMultiblockProvider.DISTRICT_HEATER);
         registerMB("centrifuge", IGCentrifugeMultiblock.INSTANCE, IGMultiblockProvider.CENTRIFUGE);
         registerMB("ballmill", IGBallmillMultiblock.INSTANCE, IGMultiblockProvider.BALLMILL);
         registerMB("foundry", IGFoundryMultiblock.INSTANCE, IGMultiblockProvider.FOUNDRY);

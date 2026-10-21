@@ -92,6 +92,7 @@
     "immersivegeology:minecraft_rich_ore_block_lignite_stone",
     "immersivegeology:ingot_lignite",
     "immersivegeology:grit_lignite",
-    "immersivegeology:normal_ore_lignite"
+    "immersivegeology:normal_ore_lignite",
+    "immersivegeology:powder_lignite"
   ]
 }

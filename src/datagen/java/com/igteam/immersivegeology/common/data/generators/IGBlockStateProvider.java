@@ -143,6 +143,14 @@ public class IGBlockStateProvider extends BlockStateProvider {
         generateMultiskinMultiblock(IGMultiblockProvider.ALTERNATOR.block().get(), "alternator", false, false, true, true);
         generateMultiskinMultiblock(IGMultiblockProvider.COREDRILL.block().get(), "coredrill", false, false, true, true);
 
+        // Coal CHP (ТЭЦ) chain: the boiler is an active-form machine (firing glow), the rest are
+        // plain mirrored multiblocks whose mtl points straight at their texture.
+        generateActiveMultiblock(IGMultiblockProvider.COAL_BOILER.block().get(), "coal_boiler");
+        genericmultiblock("electrostatic_precipitator");
+        genericmultiblock("steam_condenser");
+        genericmultiblock("cooling_tower");
+        genericmultiblock("district_heater");
+
         genericmultiblock("foundry");
         genericmultiblockMirror("centrifuge");
         genericmultiblock("ballmill");

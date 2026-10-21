@@ -50,6 +50,7 @@ public class IGRecipeTypes
 	public static final TypeWithClass<BloomeryFuel> BLOOMERY_FUEL = register("bloomery_fuel", BloomeryFuel.class);
 	public static final TypeWithClass<ChemicalRepairRecipe> CHEMICAL_REPAIR_RECIPE = register("chemical_repair", ChemicalRepairRecipe.class);
 	public static final TypeWithClass<TurbineFuel> TURBINE_FUEL = register("turbine_fuel", TurbineFuel.class);
+	public static final TypeWithClass<BoilerFuel> BOILER_FUEL = register("boiler_fuel", BoilerFuel.class);
 
 	private static <T extends Recipe<?>>
 	TypeWithClass<T> register(String name, Class<T> type)

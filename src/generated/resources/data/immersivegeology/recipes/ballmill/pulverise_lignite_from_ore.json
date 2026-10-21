@@ -1,0 +1,11 @@
+{
+  "type": "immersivegeology:ballmill",
+  "energy": 36000,
+  "input": {
+    "item": "immersivegeology:normal_ore_lignite"
+  },
+  "result": {
+    "item": "immersivegeology:powder_lignite"
+  },
+  "time": 5000
+}

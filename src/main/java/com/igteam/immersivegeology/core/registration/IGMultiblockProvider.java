@@ -102,6 +102,32 @@ public class IGMultiblockProvider {
             .gui(IGMenuTypes.SMALL_CHEMICAL_REACTOR)
             .build();
 
+    //===== Coal CHP (ТЭЦ) chain =====\\
+    public static final MultiblockRegistration<CoalBoilerLogic.State> COAL_BOILER = stone(new CoalBoilerLogic(), "coal_boiler", false)
+            .structure(() -> IGRegistrationHolder.getMBTemplate.apply("coal_boiler"))
+            .redstone(state -> state.rsState, CoalBoilerLogic.REDSTONE_IN)
+            .build();
+
+    public static final MultiblockRegistration<ElectrostaticPrecipitatorLogic.State> ELECTROSTATIC_PRECIPITATOR =
+            IGRegistrationHolder.registerMetalMultiblock("electrostatic_precipitator", new ElectrostaticPrecipitatorLogic(),
+                    () -> IGRegistrationHolder.getMBTemplate.apply("electrostatic_precipitator"),
+                    builder -> builder.redstone(state -> state.rsState, ElectrostaticPrecipitatorLogic.REDSTONE_IN));
+
+    public static final MultiblockRegistration<SteamCondenserLogic.State> STEAM_CONDENSER =
+            IGRegistrationHolder.registerMetalMultiblock("steam_condenser", new SteamCondenserLogic(),
+                    () -> IGRegistrationHolder.getMBTemplate.apply("steam_condenser"),
+                    builder -> builder.redstone(state -> state.rsState, SteamCondenserLogic.REDSTONE_IN));
+
+    public static final MultiblockRegistration<CoolingTowerLogic.State> COOLING_TOWER =
+            mirroredStone(new CoolingTowerLogic(), "cooling_tower", false)
+                    .structure(() -> IGRegistrationHolder.getMBTemplate.apply("cooling_tower"))
+                    .build();
+
+    public static final MultiblockRegistration<DistrictHeaterLogic.State> DISTRICT_HEATER =
+            IGRegistrationHolder.registerMetalMultiblock("district_heater", new DistrictHeaterLogic(),
+                    () -> IGRegistrationHolder.getMBTemplate.apply("district_heater"),
+                    builder -> builder.redstone(state -> state.rsState, DistrictHeaterLogic.REDSTONE_IN));
+
     public static final MultiblockRegistration<AlternatorLogic.State> ALTERNATOR = metal_skinnable(new AlternatorLogic(), "alternator", false, AlternatorPart::new)
             .structure(() -> IGRegistrationHolder.getMBTemplate.apply("alternator"))
             .redstone(state -> state.rsState, AlternatorLogic.REDSTONE_IN)

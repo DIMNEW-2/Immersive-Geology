@@ -59,6 +59,11 @@ public class IGComplexItemModelProvider extends ModelProvider<TRSRModelBuilder>
 		generateSmallChemicalReactor(IGMultiblockProvider.SMALL_CHEMICAL_REACTOR.block());
 		generateAlternator(IGMultiblockProvider.ALTERNATOR.block());
 
+		generateCoalChpModel("coal_boiler", IGMultiblockProvider.COAL_BOILER.block(), 0.0625F, true);
+		generateCoalChpModel("electrostatic_precipitator", IGMultiblockProvider.ELECTROSTATIC_PRECIPITATOR.block(), 0.0625F, false);
+		generateCoalChpModel("steam_condenser", IGMultiblockProvider.STEAM_CONDENSER.block(), 0.09375F, false);
+		generateCoalChpModel("cooling_tower", IGMultiblockProvider.COOLING_TOWER.block(), 0.0625F, false);
+		generateCoalChpModel("district_heater", IGMultiblockProvider.DISTRICT_HEATER.block(), 0.125F, false);
 		generatePelletizerModel("pelletizer_item", IGMultiblockProvider.PELLETIZER.block());
 		generateBallmillModel("display_ballmill", IGMultiblockProvider.BALLMILL.block());
 		generateCentrifugeMultiblock("centrifuge", IGMultiblockProvider.CENTRIFUGE.block());
@@ -346,5 +351,25 @@ public class IGComplexItemModelProvider extends ModelProvider<TRSRModelBuilder>
 		doTransform(trans, ItemDisplayContext.GUI, new Vector3f(0, -3, 0), new Vector3f(30, 225, 0), 0.125F);
 		doTransform(trans, ItemDisplayContext.GROUND, new Vector3f(-0.5F, 3, -0.5F), null, 0.0625F);
 		doTransform(trans, ItemDisplayContext.FIXED, new Vector3f(-1, -8, -2), null, 0.0625F);
+	}
+
+	/**
+	 * Item form of a coal CHP multiblock. Machines whose mtl uses a texture key (#name) need the
+	 * texture bound here, the others carry an absolute map_Kd in their mtl.
+	 */
+	private void generateCoalChpModel(String id, Supplier<? extends ItemLike> block, float heldScale, boolean needsTexture)
+	{
+		TRSRModelBuilder model = obj(block, "block/multiblock/obj/" + id + "/" + id + ".obj");
+		if(needsTexture)
+			model.texture(id, "block/multiblock/" + id + "/default");
+		ModelBuilder<?>.TransformsBuilder trans = model.transforms();
+		doTransform(trans, ItemDisplayContext.FIRST_PERSON_LEFT_HAND, new Vector3f(-1.5F, 2.5F, 1.25F), new Vector3f(0, 225, 0), heldScale);
+		doTransform(trans, ItemDisplayContext.FIRST_PERSON_RIGHT_HAND, new Vector3f(-1.5F, 2.5F, 1.75F), new Vector3f(0, 225, 0), heldScale);
+		doTransform(trans, ItemDisplayContext.THIRD_PERSON_LEFT_HAND, new Vector3f(-0.75F, 0, -1.25F), new Vector3f(0, 90, 0), heldScale);
+		doTransform(trans, ItemDisplayContext.THIRD_PERSON_RIGHT_HAND, new Vector3f(1.0F, 0, -1.75F), new Vector3f(0, 270, 0), heldScale);
+		doTransform(trans, ItemDisplayContext.HEAD, new Vector3f(0, 8, -8), null, 0.2F);
+		doTransform(trans, ItemDisplayContext.GUI, new Vector3f(0, -3, 0), new Vector3f(30, 225, 0), heldScale * 2F);
+		doTransform(trans, ItemDisplayContext.GROUND, new Vector3f(-0.5F, 3, -0.5F), null, heldScale);
+		doTransform(trans, ItemDisplayContext.FIXED, new Vector3f(-1, -8, -2), null, heldScale);
 	}
 }

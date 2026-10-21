@@ -1,0 +1,12 @@
+{
+  "type": "immersivegeology:boiler_fuel",
+  "burnTime": 140,
+  "bottom_ash_chance": 0.24,
+  "efficiency": 0.82,
+  "flue_gas": 600,
+  "input": {
+    "item": "minecraft:coal"
+  },
+  "steam": 400,
+  "water": 200
+}
