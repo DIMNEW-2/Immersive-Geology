@@ -146,6 +146,12 @@ hoppers, coil columns, radiator fins, plus an `_active` texture variant with a g
 They exist so the chain is playable immediately; replace them with real art per §7 without touching
 any Java.
 
+For the five coal CHP (ТЭЦ) machines the full production art brief - per-machine composition,
+real-plant and in-game references, sampled palette, export and placement procedure - lives in
+[`ART_BRIEF_COAL_CHP.md`](ART_BRIEF_COAL_CHP.md); the offline model self-check is
+`tools/tpp/check_model.py` and UV colouring-book templates come from `tools/tpp/uv_template.py`
+(output in `docs/art/uv/`).
+
 ---
 
 ## 4. Step 3 - textures
@@ -250,6 +256,8 @@ there in both worlds:
 
 ## 7. Replacing a placeholder model with real art - checklist
 
+0. For the machines of the coal CHP chain read [`ART_BRIEF_COAL_CHP.md`](ART_BRIEF_COAL_CHP.md)
+   first: references, per-machine composition and the acceptance checklist live there.
 1. Open/import the structure template (§2) as a block-out reference; model against it.
 2. Model in metres-with-1m-blocks, then translate the origin to the master block (§3.1). Keep the
    machine's front towards -Z.

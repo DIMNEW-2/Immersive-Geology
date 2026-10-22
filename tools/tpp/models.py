@@ -98,6 +98,10 @@ class ObjBuilder:
         self.uvs: list[tuple[float, float]] = []
         self.normals: dict[tuple[int, int, int], int] = {}
         self.faces: list[tuple[list[int], list[int], int]] = []
+        # Optional ((lox, loy, loz), (hix, hiy, hiz)) structure-space clamp. Split models render
+        # one part per structure block, so geometry that pokes outside the template bounding box
+        # lands in no part at all - keep every box inside.
+        self.clamp: tuple[tuple[float, float, float], tuple[float, float, float]] | None = None
 
     # -- primitives ---------------------------------------------------------------------------
     def _normal(self, n: tuple[int, int, int]) -> int:
@@ -125,6 +129,11 @@ class ObjBuilder:
     def box(self, x0, y0, z0, x1, y1, z1, side, top=None, bottom=None):
         top = top or side
         bottom = bottom or side
+        if self.clamp:
+            (lx, ly, lz), (hx, hy, hz) = self.clamp
+            x0, x1 = max(x0, lx), min(x1, hx)
+            y0, y1 = max(y0, ly), min(y1, hy)
+            z0, z1 = max(z0, lz), min(z1, hz)
         # +X
         self.quad([(x1, y0, z1), (x1, y0, z0), (x1, y1, z0), (x1, y1, z1)], (1, 0, 0),
                   side, (z0, y0), ((2, 1.0, 0), (1, 1.0, 0)))
@@ -291,6 +300,7 @@ def build_obj(struct: Structure) -> ObjBuilder:
     b = ObjBuilder()
     mx, my, mz = struct.master
     sx, sy, sz = struct.size
+    b.clamp = ((-mx, -my, -mz), (sx - mx, sy - my, sz - mz))
 
     def solid_at(x: int, y: int, z: int) -> bool:
         if not (0 <= x < sx and 0 <= y < sy and 0 <= z < sz):
